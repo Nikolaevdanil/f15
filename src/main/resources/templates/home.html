@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div th:each="worker : ${worker}">
+    <a  th:text="${worker.getId()}">user</a>
+    -
+    <a  th:text="${worker.getFirstName()}">user</a>
+    <a  th:text="${worker.getLastName()}">user</a>
+    <a  th:text="${worker.getMiddleName()}">user</a>
+</div>
+<br/>
+<hr/>
+
+<div th:each="manufacture : ${manufacture}">
+    <a th:text="${manufacture.getId()}">user</a>
+    -
+    <a th:text="${manufacture.getName()}">user</a>
+    <a th:text="${manufacture.getAddress()}">user</a>
+    <form th:method="POST" th:action="@{/people/{id}(id=${manufacture.getId()})}">
+        <input type="submit" value="Remuve"/>
+    </form>
+</div>
+<br/>
+<hr/>
+<form method="post" action="/people">
+    <label>
+        <input type="text" name="name" placeholder="Name...">
+    </label>
+    <label>
+        <input type="text" name="address" placeholder="Address...">
+    </label>
+    <label>
+        <input type="text" name="firstName" placeholder="FirstName ...">
+    </label>
+    <label>
+        <input type="text" name="lastName" placeholder="LastName...">
+    </label>
+    <label>
+        <input type="text" name="middleName" placeholder="MiddleName...">
+    </label>
+    <button type="submit">Add</button>
+</form>
+
+
+
+
+
+</body>
+</html>
